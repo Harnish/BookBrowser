@@ -142,6 +142,14 @@ func (s *Server) initRouter() {
 		fmt.Fprintf(w, `{"indexing": %t, "progress": %f}`, s.Indexer.Progress != 0, s.Indexer.Progress)
 	})
 
+	s.router.GET("/api/reindex", func(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+		w.Header().Set("Cache-Control", "no-cache")
+		w.Header().Set("Content-Type", "application/json")
+		s.RefreshBookIndex()
+		fmt.Fprintf(w, `{"indexing": %t, "progress": %f}`, s.Indexer.Progress != 0, s.Indexer.Progress)
+
+	})
+
 	s.router.GET("/books", s.handleBooks)
 	s.router.GET("/books/:id", s.handleBook)
 

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{.PageTitle}}</title>
     <link rel="stylesheet" href="/static/style.css?v={{.CurVersion}}">
+    <script type="text/javascript" src="/static/site.js?v={{.CurVersion}}"></script>
 </head>
 
 <body>
@@ -35,6 +36,10 @@
                 <a href="/search" class="search-item">
                     <i class="fa fa-search"></i>
                     <span>Search</span>
+                </a>
+                <a href="#" onclick="Reindex();return false;">
+                    <i class="fa fa-index"></i>
+                    <span>Reindex</span>
                 </a>
             </div>
         </nav>
